@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* If wanna use tailwind.config.js reusable css */
+@config "./tailwind.config.js";
+
+@layer components {
+  .light-thin-border {
+    @apply border border-gray-300/100;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and old Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, new Edge */
+}
+
+.logo {
+  font-family: "Parisienne", cursive;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+} */
+

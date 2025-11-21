@@ -1,0 +1,156 @@
+spring:
+  application:
+    name: Vendor-Marketplace
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+
+---
+# DEV PROFILE CONFIGURATION
+
+logging:
+  level:
+    org.springframework.cache: TRACE
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/vendor-marketplace
+    username: postgres
+    password: khan
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: password
+  ai:
+    model:
+      chat: openai
+    openai:
+      api-key: ${GEMINI_API_KEY}
+      base-url: https://generativelanguage.googleapis.com/v1beta
+      chat:
+        completions-path: /openai/chat/completions
+        options:
+          model: gemini-2.0-flash
+          temperature: 0.7
+          max-tokens: 512
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+  cache:
+    type: redis
+  data:
+    redis:
+      repositories:
+        enabled: false
+      host: localhost
+      port: 6379
+  mail:
+    host: smtp.gmail.com
+    username: ${EMAIL_USERNAME:bilalkhan.devse@gmail.com}
+    password: ${EMAIL_PASSWORD:ckphfcsgmfdknrox}
+    port: 587
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+stripe:
+  secret-key: ${STRIPE_API_SECRET_KEY}
+  success-url: ${frontend.react.url}/checkout/success
+  cancel-url: ${frontend.react.url}/checkout/cancel
+  currency: usd
+jazzcash:
+  merchant-id: ${JAZZCASH_MERCHANT_ID}
+  password: ${JAZZCASH_PASSWORD}
+  integrity-salt: ${JAZZCASH_INTEGRITY_SALT}
+  base-url: https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/
+
+  # admin info
+admin:
+  info:
+    name: ${ADMIN_NAME:Bilal Khan}
+    email: ${ADMIN_NAME:anonymousalwaysalone@gmail.com}
+    mobile: ${ADMIN_NAME:03001233445}
+
+server:
+  port: 8081
+
+---
+#  PRODUCTION PROFILE CONFIGURATION (Live)
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+  cache:
+    type: redis
+  data:
+    redis:
+      host: ${REDIS_URL}
+      port: ${REDIS_PORT}
+  # Email Configuration
+  mail:
+    host: ${EMAIL_HOST_PROVIDER}
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    port: ${EMAIL_PORT:587}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+# Stripe Live Config
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY}
+  success-url: ${frontend.react.url}/api/payments/stripe/success?paymentId={PAYMENT_ID}
+  cancel-url: ${frontend.react.url}/api/payments/stripe/cancel?paymentId={PAYMENT_ID}
+  currency: usd
+
+# JazzCash Live Merchant Config
+jazzcash:
+  merchant-id: ${JAZZCASH_MERCHANT_ID}
+  password: ${JAZZCASH_PASSWORD}
+  integrity-salt: ${JAZZCASH_INTEGRITY_SALT}
+  # Optional return url if in future shift to redirect based
+  return-url: ${frontend.react.url}/api/payments/jazzcash/callback
+  # Live payment URL
+  base-url: ${JAZZCASH_BASE_URL:https://payments.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/}
+
+# admin info
+admin:
+  info:
+    name: ${ADMIN_NAME}
+    email: ${ADMIN_NAME}
+    mobile: ${ADMIN_NAME}
+
+---
+api:
+  base:
+    url: ${BASE_URL:http://localhost:8081}
+jwt:
+  secret:
+    key: ${JWT_SECRET_KEY:6pQm/8nXkz1uD0mU5wXrZ4qV9rG7dJk8aLfP9nQw1yZ2xThB9cN4qR5vY7uK3mP0}
+frontend:
+  react:
+    url: ${FRONTEND_URL:http://localhost:5173}
+---
