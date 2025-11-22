@@ -19,6 +19,9 @@ public class CartMapper {
                 .totalSellingPrice(cart.getTotalSellingPrice())
                 .totalItems(cart.getTotalItems())
                 .totalMrpPrice(cart.getTotalMrpPrice())
+                .couponDiscountAmount(cart.getCouponDiscountAmount())
+                .originalSellingPrice(cart.getOriginalSellingPrice())
+                .originalMrpPrice(cart.getOriginalMrpPrice())
                 .discount(cart.getDiscount())
                 .couponCode(cart.getCouponCode())
                 .build();

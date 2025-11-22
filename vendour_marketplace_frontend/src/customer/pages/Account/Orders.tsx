@@ -73,6 +73,7 @@ const Orders = () => {
                                     <div key={i} onClick={() => navigate(`/account/order/${data.id}/${item.orderItemId}`)}>
                                         <OrderItem
                                             item={item}
+                                            couponCode={data.couponCode}
                                             orderStatus={data.orderStatus ?? "PLACED"}
                                             deliverDate={data.deliveryDate}
                                         />

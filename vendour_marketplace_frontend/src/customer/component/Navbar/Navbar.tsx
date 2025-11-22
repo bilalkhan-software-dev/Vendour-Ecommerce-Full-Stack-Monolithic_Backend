@@ -187,7 +187,7 @@ const Navbar = () => {
               onClick={() => navigate('/')}
               className="logo text-primary-color cursor-pointer text-xl md:text-2xl font-bold ml-1 md:ml-2"
             >
-              Vendor Name
+              Vendor Marketplace
             </h1>
 
             {/* Mobile Drawer */}

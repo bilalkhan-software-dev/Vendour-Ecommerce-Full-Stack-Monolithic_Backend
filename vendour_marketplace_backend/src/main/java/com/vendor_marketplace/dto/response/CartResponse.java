@@ -18,6 +18,7 @@ public class CartResponse {
 
     private UserResponse user;
 
+
     @Builder.Default
     private Set<CartItemResponse> cartItems = new HashSet<>();
 
@@ -26,4 +27,9 @@ public class CartResponse {
     private int totalMrpPrice;
     private double discount;
     private String couponCode;
+
+    private Integer couponDiscountAmount;
+    private Integer originalMrpPrice;
+    private Integer originalSellingPrice;
+
 }

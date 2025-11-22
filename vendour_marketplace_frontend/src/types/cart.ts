@@ -6,11 +6,16 @@ export interface CartResponse {
     user: Partial<UserResponse>;
     cartItems: CartItemResponse[];
     totalMrpPrice: number;
-    totalSellingPrice: number;
+    totalSellingPrice: number;    
     totalItems: number;
     quantity: number;
     discount: number;
+
+    // coupon related
     couponCode?: string;
+    couponDiscountAmount: number;
+    originalMrpPrice: number;
+    originalSellingPrice: number;
 }
 
 export interface CartItemResponse {

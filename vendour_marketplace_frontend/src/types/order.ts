@@ -17,7 +17,13 @@ export interface OrderResponse {
     user: UserResponse;
     orderItems: OrderItemResponse[];
     address: Address;
-    paymentDetails: PaymentDetailsResponse
+    paymentDetails: PaymentDetailsResponse;
+
+    // coupon related
+    couponCode: string;
+    couponDiscountAmount: number;
+    originalSellingPrice: number;
+
 }
 
 
@@ -41,6 +47,10 @@ export interface OrderItemResponse {
     sellingPrice: number;
     userId: number;
     product: ProductResponse;
+
+    // coupon related
+    couponDiscountAmount: number;
+    originalSellingPrice: number;
 
 }
 

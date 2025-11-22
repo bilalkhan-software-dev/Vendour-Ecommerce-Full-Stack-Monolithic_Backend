@@ -51,7 +51,7 @@ const Home = () => {
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-2">With</p>
             <h1 className="text-3xl md:text-4xl lg:text-6xl logo font-bold  mb-4 lg:mb-6">
-              Vendor Name
+              Vendor Marketplace
             </h1>
 
             <Button

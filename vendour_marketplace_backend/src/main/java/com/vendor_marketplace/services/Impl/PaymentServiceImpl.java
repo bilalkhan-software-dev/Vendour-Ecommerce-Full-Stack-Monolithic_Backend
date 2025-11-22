@@ -309,15 +309,9 @@ public class PaymentServiceImpl implements PaymentService {
                                 cartRepository.save(cart);
                             }
                         });
-
-                String userOrderCacheKey = RedisUtil.userOrders(order.getUser().getId());
-                redisUtil.deleteFromRedis(userOrderCacheKey);
-                String sellerOrderCacheKey = RedisUtil.sellerOrders(order.getSellerId());
-                redisUtil.deleteFromRedis(sellerOrderCacheKey);
-
+                // Clearing cache for data consistency
+                clearOrderCartCache(order.getUser().getId(),order.getSellerId());
             }
-
-
             ordersToSave.add(order);
         }
 
@@ -393,4 +387,13 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
 
+    private void clearOrderCartCache(long userId, long sellerId){
+        String userCart = RedisUtil.userCart(userId);
+        redisUtil.deleteFromRedis(userCart);
+        String userOrderCacheKey = RedisUtil.userOrders(userId);
+        redisUtil.deleteFromRedis(userOrderCacheKey);
+        String sellerOrderCacheKey = RedisUtil.sellerOrders(sellerId);
+        redisUtil.deleteFromRedis(sellerOrderCacheKey);
+
+    }
 }

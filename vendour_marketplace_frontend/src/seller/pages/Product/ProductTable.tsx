@@ -215,8 +215,8 @@ export default function ProductTable() {
                                     </StyledTableCell>
 
                                     {/* Prices */}
-                                    <StyledTableCell align="right">${product.mrpPrice}</StyledTableCell>
-                                    <StyledTableCell align="right">${product.sellingPrice}</StyledTableCell>
+                                    <StyledTableCell align="right">Rs. {product.mrpPrice}</StyledTableCell>
+                                    <StyledTableCell align="right">Rs. {product.sellingPrice}</StyledTableCell>
 
                                     {/* Color */}
                                     <StyledTableCell align="right">

@@ -74,7 +74,9 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers("/api/v1/auth/**",
+                        request.requestMatchers(
+                                "/health","/test-db",
+                                "/api/v1/auth/**",
                                         "/api/v1/home/",
                                         "/api/v1/sellers/register",
                                         "/api/v1/sellers/verify-email/*",

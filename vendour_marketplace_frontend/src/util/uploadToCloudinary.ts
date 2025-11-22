@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const cloud_name = "dkkgqafqw";
-const upload_preset = "your-social";
+const cloud_name = "your-cloud-name";
+const upload_preset = "your-upload-preset";
 
 export const uploadToCloudinary = async (
     file: File,

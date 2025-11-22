@@ -178,8 +178,8 @@ public class AuthServiceImpl implements AuthService {
         } else {
 
             User user = userRepository.findByUsername(email);
-            if (user == null && sentOtpRequest.getRole().equals(USER_ROLE.ROLE_CUSTOMER)) {
-                throw new ResourceNotFoundException("User not found with email: " + email);
+            if (user != null && sentOtpRequest.getRole().equals(USER_ROLE.ROLE_CUSTOMER)) {
+                throw new ResourceNotFoundException("User already found with email: " + email);
             }
         }
 

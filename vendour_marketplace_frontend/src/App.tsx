@@ -13,7 +13,6 @@ import { fetchSellerProfile } from "./redux/slice/seller/sellerSlice";
 import { fetchUserProfile } from "./redux/slice/authSlice";
 import SellerNavbar from "./seller/component/Navbar/SellerNavbar";
 import { fetchAllHomePageData } from "./redux/slice/homePageSlice";
-import { CircleRounded } from "@mui/icons-material";
 import VerifySeller from "./customer/pages/Checkout(Order)/VerifySeller/VerifySeller";
 import NotFoundPage from "./component/NotFound/NotFoundPage";
 import HomeSkeleton from "./component/skeleton/HomePageSkeleton";
@@ -117,9 +116,9 @@ const App = () => {
           <Route path="/admin/*" element={<AdminDashboard />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <div className="mt-20">
+        {/* <div className="mt-20 bottom-0 w-full">
           {renderFooter()}
-        </div>
+        </div> */}
       </div>
     </ThemeProvider>
 

@@ -36,6 +36,7 @@ const ChatBot = () => {
     const chatbot = useAppSelector((store) => store.chatbot);
     const user = useAppSelector((store) => store.auth);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
+    const token = localStorage.getItem("jwt");
 
     // Auto-scroll to bottom when messages update
     useEffect(() => {
@@ -49,7 +50,7 @@ const ChatBot = () => {
         setMessages((prev) => [...prev, { sender: "user", text: userText }]);
         setInput("");
 
-        if (user) {
+        if (user && token) {
             const result = await dispatch(askAiWithCredentials({ question: userText }));
 
             if (askAiWithCredentials.fulfilled.match(result)) {
@@ -64,7 +65,8 @@ const ChatBot = () => {
                 ]);
             }
             
-        } else {
+        }
+         else {
             const result = await dispatch(askAi({ question: userText }));
 
             if (askAi.fulfilled.match(result)) {

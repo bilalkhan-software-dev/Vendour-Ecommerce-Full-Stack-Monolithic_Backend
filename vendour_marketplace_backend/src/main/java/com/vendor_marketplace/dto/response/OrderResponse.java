@@ -25,6 +25,10 @@ public class OrderResponse {
     private Integer totalSellingPrice;
     private Integer discount;
 
+    private String couponCode;
+    private Integer couponDiscountAmount;
+    private Integer originalSellingPrice;
+
     private OrderStatus orderStatus;
     private PaymentStatus paymentStatus;
 
@@ -35,43 +39,6 @@ public class OrderResponse {
     private List<OrderItemResponse> orderItems;
     private AddressResponse address;
     private PaymentDetailsResponse paymentDetails;
-//    private PaymentOrderResponse paymentOrder;
-
-
-    // ------------------ Nested DTO classes ------------------ //
-
-//    @Data
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Builder
-//    public static class OrderItemResponse {
-//
-//        private Long id;
-//
-//        private Long productId;
-//        private String productTitle;
-//        private String productDescription;
-//        private List<String> productImages;
-//
-//        private Integer quantity;
-//        private Integer mrpPrice;
-//        private Integer sellingPrice;
-//        private String size;
-//        private Long userId;
-//    }
-
-//    @Data
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Builder
-//    public static class PaymentOrderResponse {
-//        public Long id;
-//        private Long amountPaid;
-//        private PaymentOrderStatus paymentOrderStatus;
-//        private PaymentMethod paymentMethod;
-//        private String paymentLinkId;
-//        private UserResponse user;
-//    }
 
     @Data
     @AllArgsConstructor

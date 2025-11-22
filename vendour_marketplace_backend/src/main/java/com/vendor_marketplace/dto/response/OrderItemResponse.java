@@ -17,6 +17,9 @@ public class OrderItemResponse {
     private int quantity;
     private Integer mrpPrice;
     private Integer sellingPrice;
+
+    private Integer couponDiscountAmount;
+    private Integer originalSellingPrice;
     private Long userId;
     private ProductResponse product;
 }
