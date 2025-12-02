@@ -40,7 +40,6 @@ public class CartServiceImpl implements CartService {
     @Transactional
     public CartItemResponse addCartItem(String jwt, AddItemToCartRequest request) {
         User user = userService.getUserFromJwt(jwt);
-        
         Product product = productRepository.findById(request.getProductId()).orElseThrow(
                 () -> new ResourceNotFoundException("Product not found with id " + request.getProductId())
         );
